@@ -1,0 +1,80 @@
+Montecarlo sin openmp de forma secuencial
+❯ ./montecarlo 100000000
+Estimacion de pi: 3.141584
+Execution Time: 1.091028 seconds
+
+Montecarlo con openmp sin ajustar
+❯ ./montecarlo_openmp 100000000
+Estimacion de pi: 1.620427
+Execution Time: 3.022177 seconds
+
+Montecarlo con openmp con barrera pero sin paralelizacion
+❯ ./montecarlo_openmp 100000000
+Estimacion de pi: 3.138635
+Execution Time: 2.448282 seconds
+
+Montecarlo con openmp secuencial (error con variable estado)
+❯ ./montecarlo 100000000 4
+Estimacion de pi: 3.141584
+Execution Time: 1.089430 seconds
+
+Comparación de speedup
+for p in 1 2 4 8 16; do OMP_NUM_THREADS=$p ./montecarlo_openmp 100000000; done
+Estimacion de pi: 3.141584
+Execution Time: 1.213151 seconds
+Estimacion de pi: 3.141584
+Execution Time: 1.030659 seconds
+Estimacion de pi: 3.141584
+Execution Time: 1.399854 seconds
+Estimacion de pi: 3.141584
+Execution Time: 2.781537 seconds
+Estimacion de pi: 3.141584
+Execution Time: 5.677381 seconds
+
+Montecarlo paralelo
+❯ ./montecarlo_openmp 100000000 5
+Estimacion de pi: 3.141412
+Execution Time: 0.565449 seconds
+
+speedup comparativo entre secuencial y paralelo
+[giorgio@cachyOS Montecarlo-Integration-Method]$ for p in 1 2 4 8 16; do ./montecarlo 100000000 $p ; done
+Estimacion de pi: 3.141584
+Execution Time: 1.103336 seconds
+Estimacion de pi: 3.141584
+Execution Time: 0.996736 seconds
+Estimacion de pi: 3.141584
+Execution Time: 0.995932 seconds
+Estimacion de pi: 3.141584
+Execution Time: 0.996617 seconds
+Estimacion de pi: 3.141584
+Execution Time: 1.110919 seconds
+
+[giorgio@cachyOS Montecarlo-Integration-Method]$ for p in 1 2 4 8 16; do ./montecarlo_openmp 100000000 $p ; done
+Estimacion de pi: 3.141584
+Execution Time: 1.114658 seconds
+Estimacion de pi: 3.141634
+Execution Time: 0.503152 seconds
+Estimacion de pi: 3.141339
+Execution Time: 0.348465 seconds
+Estimacion de pi: 3.141052
+Execution Time: 0.357062 seconds
+Estimacion de pi: 3.140166
+Execution Time: 0.354208 seconds
+
+Speedup con la supercomputadora de guane
+
+[gdcastanedav@guane ~]$ for p in 1 2 4 8 16 32 64; do ./montecarlo 100000000 $p; done
+Estimacion de pi: 3.141584
+Execution Time: 1.782263 seconds
+Estimacion de pi: 3.141634
+Execution Time: 0.919524 seconds
+Estimacion de pi: 3.141339
+Execution Time: 0.522693 seconds
+Estimacion de pi: 3.141052
+Execution Time: 0.212601 seconds
+Estimacion de pi: 3.140166
+Execution Time: 0.212921 seconds
+Estimacion de pi: 3.140320
+Execution Time: 0.240911 seconds
+Estimacion de pi: 3.140316
+Execution Time: 0.234708 seconds
