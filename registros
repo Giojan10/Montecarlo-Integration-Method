@@ -78,3 +78,164 @@ Estimacion de pi: 3.140320
 Execution Time: 0.240911 seconds
 Estimacion de pi: 3.140316
 Execution Time: 0.234708 seconds
+
+Usando rand_r en lugar del metodo propio
+~/Proyectos/Montecarlo-Integration-Method main* 6s
+❯ ./montecarlo3 100000000 4
+Hilo 0, iteracion inicial 0, semilla 2230039
+Hilo 2, iteracion inicial 50000000, semilla 3965924375
+Hilo 3, iteracion inicial 75000000, semilla 1677871767
+Hilo 1, iteracion inicial 25000000, semilla 3821215127
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.663581 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilo 2, iteracion inicial 50000000, semilla 3965924375
+Hilo 3, iteracion inicial 75000000, semilla 1677871767
+Hilo 0, iteracion inicial 0, semilla 2230039
+Hilo 1, iteracion inicial 25000000, semilla 3821215127
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.638211 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilo 0, iteracion inicial 0, semilla 2230039
+Hilo 1, iteracion inicial 25000000, semilla 3821215127
+Hilo 3, iteracion inicial 75000000, semilla 1677871767
+Hilo 2, iteracion inicial 50000000, semilla 3965924375
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.646773 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilo 0, iteracion inicial 0, semilla 2230039
+Hilo 3, iteracion inicial 75000000, semilla 1677871767
+Hilo 1, iteracion inicial 25000000, semilla 3821215127
+Hilo 2, iteracion inicial 50000000, semilla 3965924375
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.659415 seconds
+
+Usando random_r y schedule<dynamic>
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 4.337195 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 4.477545 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 4.375536 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 4.331919 seconds
+
+Usando random_r y schedule<static> también se le quitó el printf para hacerlo justo
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.556658 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.605039 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.583220 seconds
+
+~/Proyectos/Montecarlo-Integration-Method main*
+❯ ./montecarlo3 100000000 4
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.585070 seconds
+
+Prueba de speedup usando la versión de rand_r con reproducibilidad y usando la supercomputadora de guane
+
+[gdcastanedav@guane ~]$ for p in 1 2 4 8
+> do ./montecarlo 100000000 $p
+> done
+Hilos: 1, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 1.760437 seconds
+Hilos: 2, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.905958 seconds
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.424216 seconds
+Hilos: 8, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.213019 seconds
+[gdcastanedav@guane ~]$ for p in 1 2 4 8; do ./montecarlo 100000000 $p; done
+Hilos: 1, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 1.741724 seconds
+Hilos: 2, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.906655 seconds
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.437023 seconds
+Hilos: 8, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.212742 seconds
+[gdcastanedav@guane ~]$ for p in 1 2 4 8; do ./montecarlo 100000000 $p; done
+Hilos: 1, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 1.782883 seconds
+Hilos: 2, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.920411 seconds
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.427573 seconds
+Hilos: 8, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.212770 seconds
+[gdcastanedav@guane ~]$ for p in 1 2 4 8; do ./montecarlo 100000000 $p; done
+Hilos: 1, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 1.730497 seconds
+Hilos: 2, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.939755 seconds
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.424488 seconds
+Hilos: 8, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.212539 seconds
+[gdcastanedav@guane ~]$ for p in 1 2 4 8; do ./montecarlo 100000000 $p; done
+Hilos: 1, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 1.791168 seconds
+Hilos: 2, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.926529 seconds
+Hilos: 4, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.474478 seconds
+Hilos: 8, N: 100000000, dentro: 78539596
+Estimacion de pi: 3.141584
+Execution Time: 0.250499 seconds
